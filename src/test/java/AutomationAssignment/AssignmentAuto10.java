@@ -9,7 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
-public class AssignmentAutomation10 {
+public class AssignmentAuto10 {
 
     public static void main(String[] args) {
 
