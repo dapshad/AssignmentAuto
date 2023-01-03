@@ -14,7 +14,6 @@ public class Assignment9 {
 
     public static void main(String[] args) {
 
-
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

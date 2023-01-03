@@ -2,6 +2,7 @@ package AutomationAssignment;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +23,7 @@ public class AssignmentAuto10 {
             driver.findElement(By.xpath("//input[contains(@id, 'email1')]")).sendKeys("ineuron@ineuron.ai");
             driver.findElement(By.xpath("//input[contains(@id, 'password1')]")).sendKeys("ineuron");
             driver.findElement(By.xpath("//button[contains(@class, 'submit-btn')]")).click();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             WebElement mHover = driver.findElement(By.xpath("//span[contains(text(), 'Manage')]"));
             Actions m1 = new Actions(driver);
             m1.moveToElement(mHover).perform();
@@ -57,17 +58,25 @@ public class AssignmentAuto10 {
             }
 
 
-            driver.findElement(By.xpath("//input[@id=\"course_select_63a9c9dfb2373ba6bceb02d3\"]//following::button[@class='action-btn delete-btn']")).click();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
-            WebElement confirmDel = driver.findElement(By.xpath("//td[text()='Dapo-Selenium']"));
-            System.out.println("Course created successfully "+ confirmDel.getText());
+           WebElement deleteBtn= driver.findElement(By.xpath("//td[contains(text(),'Dapo-Selenium')]//following::td[9]"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click",deleteBtn);
+
+            WebElement confirmDel = driver.findElement(By.xpath("//td[contains(text(),'Dapo-Selenium')]"));
+            System.out.println("Course deleted successfully "+ confirmDel.getText());
             if (verify.getText().contains("Dapo")){
-                System.out.println("Course creation successful");
+                System.out.println("Course successfully deleted");
             }else{
                 System.out.println("Not successful");
             }
 
             driver.findElement(By.xpath("//button[text()=\"Sign out\"]")).click();
+
+
+            //delete for manage users in ineuron
+            // driver.findElement(By.xpath("//td[contains(text(),'Dapshad22@yahoo.com')]//following::td[5]")).click();
 
         }
     }
