@@ -18,7 +18,6 @@ public class Assignment9 {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-
         driver.get("https://ineuron-courses.vercel.app/signup");
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
