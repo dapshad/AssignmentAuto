@@ -44,5 +44,18 @@ public class Assignment9 {
         JavascriptExecutor js2 = (JavascriptExecutor) driver;
         js2.executeScript("arguments[0].click()",ele1);
 
+        //Now to verify user with same login details
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+        driver.get("https://ineuron-courses.vercel.app/login");
+        driver.findElement(By.xpath("//input[@name='email1']")).sendKeys("Dapshad12@yahoo.com");
+        driver.findElement(By.xpath("//input[@name='password1']")).sendKeys("Dapo@123");
+        WebElement ele2 =driver.findElement(By.xpath("//button[text()='Sign in']"));
+        JavascriptExecutor js3 = (JavascriptExecutor) driver;
+        js3.executeScript("arguments[0].click()",ele2);
+
+        //delete for manage users in ineuron
+        // driver.findElement(By.xpath("//td[contains(text(),'Dapshad22@yahoo.com')]//following::td[5]")).click();
+
     }
 }
